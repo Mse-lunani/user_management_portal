@@ -3,73 +3,52 @@ package selunani.user_management_portal;
  * Created by LENOVO V310 on 10/26/2018.
  */
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.NetworkImageView;
-import java.util.List;
+import selunani.user_management_portal.R;
 
-public class adapter extends BaseAdapter {
-    private Activity activity;
-    private LayoutInflater inflater;
-    private List modelItems;
-    ImageLoader imageLoader = AppController.getInstance().getImageLoader();
+public class adapter extends ArrayAdapter<String> {
+    private final Context context;
+    private final String[] values;
 
-    public adapter(Activity activity, List modelItems) {
-        this.activity = activity;
-        this.modelItems = modelItems;
-    }
-
-    @Override
-    public int getCount() {
-        return modelItems.size();
-    }
-
-    @Override
-    public Object getItem(int location) {
-        return modelItems.get(location);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
+    public adapter(Context context, String[] values) {
+        super(context, R.layout.activity_main, values);
+        this.context = context;
+        this.values = values;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        LayoutInflater inflater = (LayoutInflater) context
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        if (inflater == null)
-            inflater = (LayoutInflater) activity
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        if (convertView == null)
-            convertView = inflater.inflate(R.layout.rowlayout, null);
+        View rowView = inflater.inflate(R.layout.activity_listt
+                , parent, false);
+        TextView textView = (TextView) rowView.findViewById(R.id.label);
+        ImageView imageView = (ImageView) rowView.findViewById(R.id.logo);
+        textView.setText(values[position]);
 
-        if (imageLoader == null)
-            imageLoader = AppController.getInstance().getImageLoader();
+        // Change icon based on name
+        String s = values[position];
 
-        TextView title = (TextView) convertView.findViewById(R.id.title);
-        TextView category = (TextView) convertView.findViewById(R.id.category);
+        System.out.println(s);
 
-        NetworkImageView thumbNail = (NetworkImageView) convertView
-                .findViewById(R.id.thumbnail);
+        if (s.equals("julius")) {
+            imageView.setImageResource(R.drawable.avatar1);
+        } else if (s.equals("joel")) {
+            imageView.setImageResource(R.drawable.avatar2);
+        } else if (s.equals("makori")) {
+            imageView.setImageResource(R.drawable.avatar3);
+        } else {
+            imageView.setImageResource(R.drawable.avatar6);
+        }
 
-        // getting model data for the row
-        Model m = (Model) modelItems.get(position);
-
-        // title
-        title.setText("Title: " + String.valueOf(m.getName()));
-
-        // category
-        category.setText("Category: "+ String.valueOf(m.getId()));
-
-        // thumbnail image
-        thumbNail.setImageUrl(m.getThumbnailUrl(), imageLoader);
-
-        return convertView;
-    }}
+        return rowView;
+    }
+}
