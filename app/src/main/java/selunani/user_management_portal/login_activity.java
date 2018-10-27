@@ -17,10 +17,10 @@ public class login_activity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_activity);
-        TextView registerScreen = (TextView) findViewById(R.id.link_to_register);
-        final EditText Email = findViewById(R.id.email);
-        final EditText password = findViewById(R.id.pass);
-        Button login = findViewById(R.id.btnLogin);
+        TextView registerScreen = (TextView) findViewById(R.id.tvregister);
+        final EditText Email = findViewById(R.id.editText);
+        final EditText password = findViewById(R.id.editText2);
+        Button login = findViewById(R.id.btnlogin);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
