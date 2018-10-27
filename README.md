@@ -4,5 +4,5 @@ use default admin creds i.e username : admin password: admin
 
 Instructions
 
-Click On a user after login to view his details
+Click on a user after login to view his details
 
