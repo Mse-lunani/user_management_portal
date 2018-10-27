@@ -31,7 +31,7 @@ public class login_activity extends Activity {
                 }
                 else{
 
-                    Toast.makeText(login_activity.this,Email.getText().toString() , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(login_activity.this,"incorrect username or password" , Toast.LENGTH_SHORT).show();
                 }
             }
         });
