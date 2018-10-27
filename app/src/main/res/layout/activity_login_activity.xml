@@ -22,7 +22,7 @@
         android:fontFamily="serif"
         android:text="User management portal"
         android:textColor="@color/black"
-        android:textSize="50sp" />
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/editText"

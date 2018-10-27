@@ -5,11 +5,7 @@
     android:layout_height="wrap_content"
     android:padding="8dp" >
 
-    <!--text-->
-
-
-    <!-- Thumbnail Image -->
-    <ImageView
+            <ImageView
         android:id="@+id/logo"
         android:layout_width="150dp"
         android:layout_height="150dp"
